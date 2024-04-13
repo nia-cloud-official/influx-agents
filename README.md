@@ -11,7 +11,7 @@ Influx-CRD is a web application designed to facilitate data collection, recovery
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/yourusername/influx-crd.git`
+1. Clone the repository: `git clone https://github.com/nia-cloud-official/influx-crd.git`
 2. Navigate to the project directory: `cd influx-crd`
 3. Install dependencies: `npm install`
 4. Configure environment variables: Copy the `.env.example` file to `.env` and modify the variables as needed.
@@ -45,4 +45,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-For any inquiries or support requests, please contact [your@email.com](mailto:your@email.com).
+For any inquiries or support requests, please contact [milton@odyssey.co.zw](mailto:miltonhyndrex@gmail.com).
