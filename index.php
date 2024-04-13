@@ -1,9 +1,42 @@
 <?php 
-   require("./includes/config/index.php");
+    // Include database configuration
+    require("./includes/config/index.php");
+
+    // Check if the form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Retrieve form data
+        $fname = $_POST["fname"];
+        $lname = $_POST["lname"];
+        $idnumber = $_POST["idnumber"];
+        $address = $_POST["address"];
+        $phone = $_POST["phone"];
+        
+        // Prepare insert statement
+        $sql = "INSERT INTO person (firstname, lastname, IDNumber, `Physical Address`, `Phone Number`) VALUES (?, ?, ?, ?, ?)";
+        
+        if ($stmt = $mysqli->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("sssss", $fname, $lname, $idnumber, $address, $phone);
+            
+            // Attempt to execute the prepared statement
+            if ($stmt->execute()) {
+                // Success message
+                echo "Data added successfully!";
+            } else {
+                // Error message
+                echo "Error: " . $mysqli->error;
+            }
+
+            // Close statement
+            $stmt->close();
+        }
+        
+        // Close connection
+        $mysqli->close();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +55,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
 </head>
-
 <body class="profile-page">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
@@ -75,7 +107,7 @@
                 <h5 class="text-on-back">01</h5>
               </div>
               <div class="card-body">
-                <form>
+                <form method="post">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -160,5 +192,4 @@
   <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
 </body>
-
 </html>
