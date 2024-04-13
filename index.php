@@ -54,7 +54,7 @@
         </div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Back to Kit</a>
+            <a class="nav-link" href="#">Invite an Agent</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Help?</a>
